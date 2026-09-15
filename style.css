@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#16150f;
+  --panel:#211f17;
+  --panel-2:#28251b;
+  --border:#3a372f;
+  --text:#f2eee1;
+  --text-dim:#a8a395;
+  --lower:#c1272d;
+  --upper:#1e5fa8;
+  --cta:#e8b93a;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter', sans-serif;
+  line-height:1.5;
+  padding:48px 24px 80px;
+}
+
+.wrap{ max-width:640px; margin:0 auto; }
+
+h1{
+  font-family:'Bebas Neue', sans-serif;
+  font-weight:400;
+  font-size:clamp(2.6rem, 7vw, 4rem);
+  letter-spacing:0.02em;
+  margin:0 0 4px;
+  line-height:0.95;
+}
+
+.subtitle{
+  color:var(--text-dim);
+  font-size:0.95rem;
+  margin:0 0 40px;
+  border-left:3px solid var(--cta);
+  padding-left:10px;
+}
+
+h2{
+  font-family:'Bebas Neue', sans-serif;
+  font-weight:400;
+  font-size:1.5rem;
+  letter-spacing:0.03em;
+  margin:0 0 16px;
+}
+
+form{
+  display:grid;
+  gap:14px;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:20px;
+  margin-bottom:40px;
+}
+
+label{
+  display:block;
+  font-size:0.8rem;
+  color:var(--text-dim);
+  margin-bottom:5px;
+}
+
+input, select{
+  width:100%;
+  background:var(--panel-2);
+  border:1px solid var(--border);
+  color:var(--text);
+  padding:10px 12px;
+  border-radius:3px;
+  font-family:'Inter', sans-serif;
+  font-size:0.95rem;
+}
+
+input:focus, select:focus{
+  outline:2px solid var(--cta);
+  outline-offset:1px;
+  border-color:var(--cta);
+}
+
+.row{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+
+button{
+  margin-top:6px;
+  background:var(--cta);
+  color:#16150f;
+  border:none;
+  font-weight:700;
+  font-size:0.95rem;
+  padding:12px 16px;
+  border-radius:3px;
+  cursor:pointer;
+  letter-spacing:0.02em;
+}
+button:hover{ filter:brightness(1.08); }
+button:active{ transform:translateY(1px); }
+
+.card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-left:6px solid var(--lower);
+  border-radius:4px;
+  padding:22px 24px;
+}
+
+.card-name{
+  font-family:'Bebas Neue', sans-serif;
+  font-weight:400;
+  font-size:1.8rem;
+  letter-spacing:0.02em;
+  margin:0 0 6px;
+}
+
+.card-meta{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  color:var(--text-dim);
+  font-size:0.9rem;
+  margin:0 0 12px;
+}
+
+.badge{
+  display:inline-block;
+  padding:2px 9px;
+  border-radius:20px;
+  font-size:0.75rem;
+  font-weight:600;
+  background:var(--lower);
+  color:#fff;
+}
+
+.card-sets{ font-size:1rem; margin:0 0 4px; }
+.card-intensity{ font-size:1rem; color:var(--cta); font-weight:600; margin:0; }
+
+footer{ margin-top:60px; color:var(--text-dim); font-size:0.8rem; }

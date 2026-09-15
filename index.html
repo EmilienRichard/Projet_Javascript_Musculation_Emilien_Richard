@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Suivi de Musculation — Étape 1</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="wrap">
+
+    <h1>Mon Suivi de Musculation</h1>
+    <p class="subtitle">Étape 1 — Manipulation directe du DOM</p>
+    <p class="subtitle">by Emilien Richard (featuring Claude)</p>
+
+    <h2>Modifier les informations de l'exercice</h2>
+    <form id="exercise-form">
+      <div>
+        <label for="exo-nom">Nom de l'exercice</label>
+        <input list="exos" id="exo-nom" value="Curl pupitre">
+        <datalist id="exos">
+          <option value="Curl pupitre">
+          <option value="Curl poulie">
+          <option value="Machine adducteur">
+          <option value="Machine abducteur">
+          <option value="Calf raises">
+          <option value="Leg presses">
+          <option value="Leg extensions">
+          <option value="Curl ischios assis">
+          <option value="Smith incliné pec">
+          <option value="Machine pec fly">
+          <option value="Élévations latérales à la poulie">
+          <option value="Smith développé militaire">
+          <option value="JM Press">
+          <option value="Extension triceps unilatéral">
+          <option value="Tirage vertical à la machine">
+          <option value="Tirage horizontal prise large">
+          <option value="Pull over à la machine">
+        </datalist>
+      </div>
+
+      <div class="row">
+        <div>
+          <label for="exo-cat">Catégorie</label>
+          <select id="exo-cat">
+            <option value="lower">Lower — Bas du corps</option>
+            <option value="upper">Upper — Haut du corps</option>
+          </select>
+        </div>
+        <div>
+          <label for="exo-intensite">Intensité (% du max)</label>
+          <input type="number" id="exo-intensite" value="80" min="0" max="100">
+        </div>
+      </div>
+
+      <div>
+        <label for="exo-series">Séries &amp; répétitions</label>
+        <input type="text" id="exo-series" value="2 séries (1-2 RIR)">
+      </div>
+
+      <button type="button" id="btn-update">Mettre à jour la carte</button>
+    </form>
+
+    <h2>Aperçu de la carte</h2>
+    <div class="card" id="card">
+      <p class="card-name" id="card-nom">Curl pupitre</p>
+      <div class="card-meta">
+        <span class="badge" id="card-badge">Lower</span>
+        <span id="card-cat-label">Bas du corps</span>
+      </div>
+      <p class="card-sets" id="card-series">2 séries (1-2 RIR)</p>
+      <p class="card-intensity" id="card-intensite">80% de ton max</p>
+    </div>
+
+    <footer>Programme personnel — cycle sur 5 jours sur 7 (Lower / Upper 1 / Upper 2 / repos / Lower / Upper / repos)
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
