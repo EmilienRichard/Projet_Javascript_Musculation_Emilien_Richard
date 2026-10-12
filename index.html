@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mon Suivi de Musculation — Étape 1</title>
+  <title>Mon Suivi de Musculation — Étape Avancée</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -12,14 +12,15 @@
   <div class="wrap">
 
     <h1>Mon Suivi de Musculation</h1>
-    <p class="subtitle">Étape 1 — Manipulation directe du DOM</p>
+    <p class="subtitle">Objets, Programmation Fonctionnelle &amp; Persistance</p>
     <p class="subtitle">by Emilien Richard (featuring Claude)</p>
 
-    <h2>Modifier les informations de l'exercice</h2>
+    <!-- Formulaire d'ajout -->
+    <h2>Ajouter / Modifier un exercice</h2>
     <form id="exercise-form">
       <div>
         <label for="exo-nom">Nom de l'exercice</label>
-        <input list="exos" id="exo-nom" value="Curl pupitre">
+        <input list="exos" id="exo-nom" placeholder="Ex: Curl pupitre" value="Curl pupitre">
         <datalist id="exos">
           <option value="Curl pupitre">
           <option value="Curl poulie">
@@ -60,19 +61,28 @@
         <input type="text" id="exo-series" value="2 séries (1-2 RIR)">
       </div>
 
-      <button type="button" id="btn-update">Mettre à jour la carte</button>
+      <button type="button" id="btn-update">Ajouter l'exercice au programme</button>
     </form>
 
-    <h2>Aperçu de la carte</h2>
-    <div class="card" id="card">
-      <p class="card-name" id="card-nom">Curl pupitre</p>
-      <div class="card-meta">
-        <span class="badge" id="card-badge">Lower</span>
-        <span id="card-cat-label">Bas du corps</span>
-      </div>
-      <p class="card-sets" id="card-series">2 séries (1-2 RIR)</p>
-      <p class="card-intensity" id="card-intensite">80% de ton max</p>
+    <!-- Zone de Filtrage dynamique -->
+    <h2>Filtrer le catalogue</h2>
+    <div style="margin-bottom: 24px;">
+      <label for="filtre-cat">Afficher par catégorie :</label>
+      <select id="filtre-cat">
+        <option value="all">Tous les exercices</option>
+        <option value="upper">Upper — Haut du corps</option>
+        <option value="lower">Lower — Bas du corps</option>
+      </select>
     </div>
+
+    <!-- Statistiques (Reduce & Math) -->
+    <div id="stats-container"
+      style="background: var(--panel); border: 1px solid var(--border); padding: 16px; border-radius: 4px; margin-bottom: 24px;">
+    </div>
+
+    <!-- Liste dynamique générée par map() -->
+    <h2>Liste des exercices enregistrés</h2>
+    <div id="liste-exercices"></div>
 
     <footer>Programme personnel — cycle sur 5 jours sur 7 (Lower / Upper 1 / Upper 2 / repos / Lower / Upper / repos)
     </footer>
