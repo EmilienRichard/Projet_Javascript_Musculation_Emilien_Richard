@@ -1,0 +1,135 @@
+[
+    {
+        "nom": "Curl pupitre",
+        "categorie": "lower",
+        "series": 2,
+        "intensite": 80,
+        "rir": "1-2"
+    },
+    {
+        "nom": "Curl poulie",
+        "categorie": "lower",
+        "series": 1,
+        "intensite": 80,
+        "rir": "1-2"
+    },
+    {
+        "nom": "Machine adducteur",
+        "categorie": "lower",
+        "series": 2,
+        "intensite": 80,
+        "rir": "1-2"
+    },
+    {
+        "nom": "Machine abducteur",
+        "categorie": "lower",
+        "series": 2,
+        "intensite": 80,
+        "rir": "1-2"
+    },
+    {
+        "nom": "Calf raises",
+        "categorie": "lower",
+        "series": 2,
+        "intensite": 80,
+        "rir": "1-2"
+    },
+    {
+        "nom": "Leg presses",
+        "categorie": "lower",
+        "series": 2,
+        "intensite": 80,
+        "rir": "1-2"
+    },
+    {
+        "nom": "Leg extensions",
+        "categorie": "lower",
+        "series": 1,
+        "intensite": 80,
+        "rir": "1-2"
+    },
+    {
+        "nom": "Curl ischios assis",
+        "categorie": "lower",
+        "series": 2,
+        "intensite": 80,
+        "rir": "1-2"
+    },
+    {
+        "nom": "Smith incliné pec",
+        "categorie": "upper",
+        "series": 2,
+        "intensite": 80,
+        "rir": "1-2"
+    },
+    {
+        "nom": "Machine pec fly",
+        "categorie": "upper",
+        "series": 1,
+        "intensite": 80,
+        "rir": "1-2"
+    },
+    {
+        "nom": "Élévations latérales à la poulie",
+        "categorie": "upper",
+        "series": 2,
+        "intensite": 60,
+        "rir": "1-2"
+    },
+    {
+        "nom": "Smith développé militaire",
+        "categorie": "upper",
+        "series": 2,
+        "intensite": 80,
+        "rir": "1-2"
+    },
+    {
+        "nom": "Arrière d'épaule au pec fly",
+        "categorie": "upper",
+        "series": 2,
+        "intensite": 60,
+        "rir": "1-2"
+    },
+    {
+        "nom": "Abdos à la machine",
+        "categorie": "upper",
+        "series": 2,
+        "intensite": 50,
+        "rir": "1-2"
+    },
+    {
+        "nom": "JM Press",
+        "categorie": "upper",
+        "series": 1,
+        "intensite": 80,
+        "rir": "1-2"
+    },
+    {
+        "nom": "Extension triceps unilatéral",
+        "categorie": "upper",
+        "series": 1,
+        "intensite": 80,
+        "rir": "1-2"
+    },
+    {
+        "nom": "Tirage vertical à la machine",
+        "categorie": "upper",
+        "series": 2,
+        "intensite": 80,
+        "rir": "1-2"
+    },
+    {
+        "nom": "Tirage horizontal prise large",
+        "categorie": "upper",
+        "series": 2,
+        "intensite": 80,
+        "rir": "1-2"
+    },
+    {
+        "nom": "Pull over à la machine",
+        "categorie": "upper",
+        "series": 1,
+        "intensite": 80,
+        "rir": "1-2"
+    }
+]

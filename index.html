@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mon Suivi de Musculation — Étape Avancée</title>
+  <title>Mon Suivi de Musculation — POO, Fetch &amp; Modules</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -12,15 +12,15 @@
   <div class="wrap">
 
     <h1>Mon Suivi de Musculation</h1>
-    <p class="subtitle">Objets, Programmation Fonctionnelle &amp; Persistance</p>
+    <p class="subtitle">Modélisation POO, API Fetch &amp; ES Modules</p>
     <p class="subtitle">by Emilien Richard (featuring Claude)</p>
 
     <!-- Formulaire d'ajout -->
-    <h2>Ajouter / Modifier un exercice</h2>
+    <h2>Ajouter un exercice</h2>
     <form id="exercise-form">
       <div>
         <label for="exo-nom">Nom de l'exercice</label>
-        <input list="exos" id="exo-nom" placeholder="Ex: Curl pupitre" value="Curl pupitre">
+        <input list="exos" id="exo-nom" placeholder="Ex: Curl pupitre" autocomplete="off">
         <datalist id="exos">
           <option value="Curl pupitre">
           <option value="Curl poulie">
@@ -34,6 +34,8 @@
           <option value="Machine pec fly">
           <option value="Élévations latérales à la poulie">
           <option value="Smith développé militaire">
+          <option value="Arrière d'épaule au pec fly">
+          <option value="Abdos à la machine">
           <option value="JM Press">
           <option value="Extension triceps unilatéral">
           <option value="Tirage vertical à la machine">
@@ -52,21 +54,30 @@
         </div>
         <div>
           <label for="exo-intensite">Intensité (% du max)</label>
-          <input type="number" id="exo-intensite" value="80" min="0" max="100">
+          <input type="number" id="exo-intensite" value="80" min="0" max="100" step="0.5">
         </div>
       </div>
 
-      <div>
-        <label for="exo-series">Séries &amp; répétitions</label>
-        <input type="text" id="exo-series" value="2 séries (1-2 RIR)">
+      <div class="row">
+        <div>
+          <label for="exo-series">Nombre de séries</label>
+          <input type="number" id="exo-series" value="2" min="1" max="20" step="1">
+        </div>
+        <div>
+          <label for="exo-rir">RIR (reps en réserve)</label>
+          <input type="text" id="exo-rir" value="1-2">
+        </div>
       </div>
 
-      <button type="button" id="btn-update">Ajouter l'exercice au programme</button>
+      <button type="submit">Ajouter l'exercice au programme</button>
     </form>
 
-    <!-- Zone de Filtrage dynamique -->
+    <!-- Messages (succès, erreurs de validation, erreurs HTTP) -->
+    <p id="message" class="message" role="status"></p>
+
+    <!-- Zone de filtrage dynamique -->
     <h2>Filtrer le catalogue</h2>
-    <div style="margin-bottom: 24px;">
+    <div class="filtre">
       <label for="filtre-cat">Afficher par catégorie :</label>
       <select id="filtre-cat">
         <option value="all">Tous les exercices</option>
@@ -75,20 +86,22 @@
       </select>
     </div>
 
-    <!-- Statistiques (Reduce & Math) -->
-    <div id="stats-container"
-      style="background: var(--panel); border: 1px solid var(--border); padding: 16px; border-radius: 4px; margin-bottom: 24px;">
-    </div>
+    <!-- Statistiques (reduce & Math) -->
+    <div id="stats-container" class="stats"></div>
 
     <!-- Liste dynamique générée par map() -->
-    <h2>Liste des exercices enregistrés</h2>
+    <div class="liste-entete">
+      <h2>Liste des exercices enregistrés</h2>
+      <button type="button" id="btn-import" class="btn-secondaire">Importer le programme (JSON)</button>
+    </div>
+    <p id="compteur" class="compteur"></p>
     <div id="liste-exercices"></div>
 
     <footer>Programme personnel — cycle sur 5 jours sur 7 (Lower / Upper 1 / Upper 2 / repos / Lower / Upper / repos)
     </footer>
   </div>
 
-  <script src="script.js"></script>
+  <script type="module" src="js/main.js"></script>
 </body>
 
 </html>
