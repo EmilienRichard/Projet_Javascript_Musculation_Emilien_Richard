@@ -5,6 +5,9 @@ import { Exercice } from './Exercice.js';
 import { ExerciceService } from './ExerciceService.js';
 import { chargerExercices, sauvegarderExercices } from './stockage.js';
 import { afficherListe, afficherStats, afficherMessage } from './affichage.js';
+import {
+    ajouterSerie, supprimerSerie, afficherJournal, chargerJournal, verifierChargeEnDirect
+} from './journal.js';
 
 const service = new ExerciceService('data/exercices.json');
 
@@ -31,7 +34,7 @@ const importerProgramme = async () => {
             !exercices.some((existant) => existant.nom === exo.nom && existant.categorie === exo.categorie)
         );
 
-        exercices.push(...nouveaux);
+        exercices = [...exercices, ...nouveaux];
         sauvegarderExercices(exercices);
         rafraichir();
         afficherMessage(`${nouveaux.length} exercice(s) importé(s) depuis le fichier JSON.`);
@@ -53,7 +56,8 @@ const ajouterExercice = (e) => {
             document.querySelector('#exo-rir').value
         );
 
-        exercices.push(exo);
+        // Opérateur spread : on crée un nouveau tableau au lieu de modifier l'ancien
+        exercices = [...exercices, exo];
         sauvegarderExercices(exercices);
         rafraichir();
         afficherMessage(`« ${exo.nom} » ajouté au programme.`);
@@ -63,13 +67,8 @@ const ajouterExercice = (e) => {
     }
 };
 
-// Un seul écouteur sur la liste (les cartes sont recréées à chaque rendu)
-const gererActions = (e) => {
-    const bouton = e.target.closest('[data-action]');
-    if (!bouton) return;
-
-    const action = bouton.dataset.action;
-    const id = Number(bouton.dataset.id);
+// Appelée par les attributs onclick des cartes : gererActions('supprimer', 123)
+const gererActions = (action, id) => {
     const exo = exercices.find((element) => element.id === id);
     if (!exo) return;
 
@@ -90,8 +89,20 @@ const gererActions = (e) => {
     }
 };
 
+// Contrôle de saisie en temps réel (oninput dans le HTML)
+const verifierNomEnDirect = (valeur) => {
+    if (valeur.trim() === '') {
+        afficherMessage("Le nom de l'exercice est obligatoire.", true);
+    } else {
+        afficherMessage('');
+    }
+};
+
 // 6. Réhydratation au chargement, sinon import du fichier JSON
 const demarrer = async () => {
+    chargerJournal();
+    afficherJournal();
+
     const sauvegardes = chargerExercices();
 
     if (sauvegardes !== null) {
@@ -104,9 +115,17 @@ const demarrer = async () => {
     await importerProgramme();
 };
 
-document.querySelector('#exercise-form').addEventListener('submit', ajouterExercice);
-document.querySelector('#liste-exercices').addEventListener('click', gererActions);
-document.querySelector('#filtre-cat').addEventListener('change', rafraichir);
-document.querySelector('#btn-import').addEventListener('click', importerProgramme);
+// Les attributs HTML (onclick, oninput, onsubmit...) cherchent leurs fonctions dans la portée globale.
+// Un module a sa propre portée : on expose donc explicitement les fonctions utilisées dans le HTML.
+Object.assign(window, {
+    ajouterExercice,
+    gererActions,
+    rafraichir,
+    importerProgramme,
+    verifierNomEnDirect,
+    ajouterSerie,
+    supprimerSerie,
+    verifierChargeEnDirect
+});
 
 demarrer();

@@ -4,7 +4,7 @@
 import { Exercice } from './Exercice.js';
 
 // Le texte saisi passe par innerHTML : on neutralise les caractères HTML
-const echapper = (texte) => String(texte).replace(/[&<>"']/g, (c) => ({
+export const echapper = (texte) => String(texte).replace(/[&<>"']/g, (c) => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
 }[c]));
 
@@ -42,13 +42,13 @@ export const afficherListe = (liste, total) => {
               <span class="card-date">Ajouté le ${exo.dateAjoutLocale}</span>
             </div>
           </div>
-          <button type="button" class="btn-small btn-delete" data-action="supprimer" data-id="${exo.id}">Supprimer</button>
+          <button type="button" class="btn-small btn-delete" onclick="gererActions('supprimer', ${exo.id})">Supprimer</button>
         </div>
         <p class="card-sets">${exo.series} série${exo.series > 1 ? 's' : ''} (${echapper(exo.rir)} RIR)</p>
         <p class="card-intensity">${formaterPourcent(exo.intensite)} de ton max</p>
         <div class="card-actions">
-          <button type="button" class="btn-small" data-action="diminuer" data-id="${exo.id}">− ${Exercice.PAS_INTENSITE} %</button>
-          <button type="button" class="btn-small" data-action="augmenter" data-id="${exo.id}">+ ${Exercice.PAS_INTENSITE} %</button>
+          <button type="button" class="btn-small" onclick="gererActions('diminuer', ${exo.id})">− ${Exercice.PAS_INTENSITE} %</button>
+          <button type="button" class="btn-small" onclick="gererActions('augmenter', ${exo.id})">+ ${Exercice.PAS_INTENSITE} %</button>
         </div>
       </article>
     `;

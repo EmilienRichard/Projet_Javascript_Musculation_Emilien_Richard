@@ -17,10 +17,11 @@
 
     <!-- Formulaire d'ajout -->
     <h2>Ajouter un exercice</h2>
-    <form id="exercise-form">
+    <form id="exercise-form" onsubmit="ajouterExercice(event)">
       <div>
         <label for="exo-nom">Nom de l'exercice</label>
-        <input list="exos" id="exo-nom" placeholder="Ex: Curl pupitre" autocomplete="off">
+        <input list="exos" id="exo-nom" placeholder="Ex: Curl pupitre" autocomplete="off"
+          oninput="verifierNomEnDirect(this.value)">
         <datalist id="exos">
           <option value="Curl pupitre">
           <option value="Curl poulie">
@@ -79,7 +80,7 @@
     <h2>Filtrer le catalogue</h2>
     <div class="filtre">
       <label for="filtre-cat">Afficher par catégorie :</label>
-      <select id="filtre-cat">
+      <select id="filtre-cat" onchange="rafraichir()">
         <option value="all">Tous les exercices</option>
         <option value="upper">Upper — Haut du corps</option>
         <option value="lower">Lower — Bas du corps</option>
@@ -92,10 +93,45 @@
     <!-- Liste dynamique générée par map() -->
     <div class="liste-entete">
       <h2>Liste des exercices enregistrés</h2>
-      <button type="button" id="btn-import" class="btn-secondaire">Importer le programme (JSON)</button>
+      <button type="button" id="btn-import" class="btn-secondaire" onclick="importerProgramme()">Importer le programme
+        (JSON)</button>
     </div>
     <p id="compteur" class="compteur"></p>
     <div id="liste-exercices"></div>
+
+    <!-- Journal de séance : tableaux parallèles, boucle for, switch -->
+    <h2>Journal de séance</h2>
+    <form id="journal-form" onsubmit="ajouterSerie(event)">
+      <div>
+        <label for="journal-nom">Exercice réalisé</label>
+        <input list="exos" id="journal-nom" placeholder="Ex: Leg presses" autocomplete="off">
+      </div>
+
+      <div class="row">
+        <div>
+          <label for="journal-charge">Charge (kg)</label>
+          <input type="number" id="journal-charge" min="0" step="0.5" oninput="verifierChargeEnDirect(this.value)">
+        </div>
+        <div>
+          <label for="journal-reps">Répétitions</label>
+          <input type="number" id="journal-reps" min="1" step="1">
+        </div>
+      </div>
+
+      <div>
+        <label for="journal-ressenti">Ressenti</label>
+        <select id="journal-ressenti">
+          <option value="facile">Facile (3 reps ou plus en réserve)</option>
+          <option value="bon" selected>Bon (1-2 RIR)</option>
+          <option value="dur">À l'échec (0 RIR)</option>
+        </select>
+      </div>
+
+      <p id="message-journal" class="message" role="status"></p>
+      <button type="submit">Ajouter au journal</button>
+    </form>
+
+    <div id="liste-journal"></div>
 
     <footer>Programme personnel — cycle sur 5 jours sur 7 (Lower / Upper 1 / Upper 2 / repos / Lower / Upper / repos)
     </footer>
